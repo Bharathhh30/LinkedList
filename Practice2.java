@@ -1,54 +1,46 @@
-public class Main {
+public class Practice2 {
     static class Node{
         int data;
         Node next;
 
         Node(int data){
             this.data = data;
-            this.next = null;
         }
     }
 
     static class LinkedList{
-        Node head; // very importanrt guru
+        Node head;
 
-        // insert data
+        // insert
         void insert(int data){
-            // create newnode first
             Node newNode = new Node(data);
 
-            // if head is null
-            if(head==null){
+            if (head==null){
                 head = newNode;
                 return;
             }
 
-            // insertion 
             Node temp = head;
             while(temp.next!=null){
                 temp = temp.next;
             }
             temp.next = newNode;
         }
-
-        // deletion 
+        // delete
         void delete(int value){
-            // if no head return 
-            if (head == null){
+            if(head==null){
                 return;
             }
 
-            // if head is asked for deletion
-            if (head.data == value){
+            if(head.data == value){
                 head = head.next;
             }
 
-            // rest any kind of deletion
             Node temp = head;
             Node prev = null;
 
-            while(temp!=null){
-                if (temp.data == value){
+            while (temp!=null) {
+                if(temp.data == value){
                     prev.next = prev.next.next;
                     break;
                 }
@@ -57,12 +49,12 @@ public class Main {
                 temp = temp.next;
             }
         }
-
-        // display list
+        // display
         void display(){
             Node temp = head;
-            while(temp!=null){
-                System.out.print(temp.data + "->");
+
+            while (temp!=null) {
+                System.out.print(temp.data+ "-->");
                 temp = temp.next;
             }
             System.out.println("null");
@@ -70,17 +62,13 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        LinkedList list = new LinkedList();
+        LinkedList ls = new LinkedList();
+        ls.insert(21);
+        ls.insert(22);
+        ls.insert(23);
+        ls.insert(24);
 
-        list.insert(1);
-        list.insert(2);
-        list.insert(3);
-        list.insert(4);
-
-        list.display(); // 1-2-3-4
-
-        list.delete(3);
-
-        list.display();
+        ls.delete(23);
+        ls.display();
     }
 }
